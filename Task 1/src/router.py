@@ -6,19 +6,19 @@ from anonymizer import anonymize_username
 
 router = APIRouter()
 
-@router.post("/",response_model=Message)
+@router.post("/getall",response_model=Message)
 async def create_message(message_request: MessageRequest):
     message_request.UserName = anonymize_username(message_request.UserName)
     message = Message(**message_request.model_dump())
     await message.create()
     return message
 
-@router.get("/",response_model=List[Message])
+@router.get("/createmessage",response_model=List[Message])
 async def get_allmessages():
     messages = await Message.find_all().to_list()
     return messages
 
-@router.get("/{UserName}",response_model=List[Message])
+@router.get("/getuser",response_model=List[Message])
 async def get_UserMessages(UserName:str):
     UserName = anonymize_username(UserName)
     messages = await Message.find(Message.UserName == UserName).to_list()
@@ -26,7 +26,7 @@ async def get_UserMessages(UserName:str):
         return []
     return [MessageRequest(**message.model_dump()) for message in messages]
 
-@router.get("/{UserName}/{ChatTitle}",response_model=str)
+@router.get("/gethistory",response_model=str)
 async def get_ChatMessage(UserName:str, ChatTitle:str):
     UserName = anonymize_username(UserName)
     message = await Message.find(Message.UserName == UserName and Message.ChatTitle == ChatTitle).first_or_none()
@@ -34,7 +34,7 @@ async def get_ChatMessage(UserName:str, ChatTitle:str):
         return ""
     return MessageRequest(**message.model_dump()).Message
 
-@router.put("/{UserName}/{ChatTitle}", response_model=str)
+@router.put("/query", response_model=str)
 async def update_post(UserName:str, ChatTitle:str, query: str):
     UserName = anonymize_username(UserName)
     message = await Message.find(Message.UserName == UserName and Message.ChatTitle == ChatTitle).first_or_none()
@@ -46,7 +46,7 @@ async def update_post(UserName:str, ChatTitle:str, query: str):
     await message.update({"$set":new.model_dump(exclude_unset = True)})
     return reply
 
-@router.delete("/{message_id}")
+@router.delete("/delete")
 async def delete_message(message_id: str):
     message = await Message.get(message_id)
     throw_exception(message)
