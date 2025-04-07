@@ -6,14 +6,14 @@ from anonymizer import anonymize_username
 
 router = APIRouter()
 
-@router.post("/getall",response_model=Message)
+@router.post("/createmessage",response_model=Message)
 async def create_message(message_request: MessageRequest):
     message_request.UserName = anonymize_username(message_request.UserName)
     message = Message(**message_request.model_dump())
     await message.create()
     return message
 
-@router.get("/createmessage",response_model=List[Message])
+@router.get("/getall",response_model=List[Message])
 async def get_allmessages():
     messages = await Message.find_all().to_list()
     return messages
