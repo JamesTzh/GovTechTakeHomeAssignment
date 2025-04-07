@@ -45,6 +45,12 @@ This repo is for GovTech take home assignment.
 
 
 ## Screenshots
+Front Page:
+![Frontpage]([https://via.placeholder.com/468x300?text=App+Screenshot+Here](https://github.com/JamesTzh/GovTechTakeHomeAssignment/blob/main/Images/Front%20page.png))
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+Chat Page:
+![chatpage]([https://via.placeholder.com/468x300?text=App+Screenshot+Here](https://github.com/JamesTzh/GovTechTakeHomeAssignment/blob/main/Images/Front%20page.png))
+
+FASTAPI Page:
+![FASTAPIpage]([https://via.placeholder.com/468x300?text=App+Screenshot+Here](https://github.com/JamesTzh/GovTechTakeHomeAssignment/blob/main/Images/Front%20page.png))
 
