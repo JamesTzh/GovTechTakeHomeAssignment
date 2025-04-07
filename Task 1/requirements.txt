@@ -2,3 +2,6 @@ uvicorn
 fastapi
 pydantic
 beanie
+pymongo[srv]
+motor
+openai
