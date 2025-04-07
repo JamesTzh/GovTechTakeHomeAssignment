@@ -24,7 +24,7 @@ def format_history(Messages):
 def get_ai_response(FormatedHistoryMessages):
     response = client.responses.create(
         model="gpt-4o-mini",
-        instructions="You are give a query and the chat history, answer the query with the context of the chat history.",
+        instructions="You are give a query and the chat history, answer the query with the context of the chat history. Do not use any special characters like ','",
         input=FormatedHistoryMessages,
     )
 
