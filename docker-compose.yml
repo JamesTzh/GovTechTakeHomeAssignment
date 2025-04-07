@@ -1,0 +1,35 @@
+services:
+  mongodb:
+    image: jamestzh/sha256:b1d4ab2a034263b0e2306e41be1a596bd8600fb6fadef145a9088791c8d7c4b5
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - app-network
+
+  python_app:
+    image: jamestzh/sha256:03db956cbbdd3f2e7c0344a6d1b5d15d5711f630dccace8e7bfff7184e49ecac
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: python_app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - mongodb  # This ensures the MongoDB container starts before the Python app
+    environment:
+      - MONGO_URI=mongodb://mongodb:27017
+      - gptapikey=${gptapikey}
+    networks:
+      - app-network
+    restart: on-failure
+
+volumes:
+  mongodb_data:
+    driver: local
+
+networks:
+  app-network:
+    driver: bridge
