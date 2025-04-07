@@ -48,6 +48,7 @@ async def update_post(UserName:str, ChatTitle:str, query: str):
 
 @router.delete("/delete")
 async def delete_message(UserName:str, ChatTitle:str):
+    UserName = anonymize_username(UserName)
     message = await Message.find(Message.UserName == UserName and Message.ChatTitle == ChatTitle).first_or_none()
     throw_exception(message)
     await message.delete()
