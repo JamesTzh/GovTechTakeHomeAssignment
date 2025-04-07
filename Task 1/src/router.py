@@ -47,8 +47,8 @@ async def update_post(UserName:str, ChatTitle:str, query: str):
     return reply
 
 @router.delete("/delete")
-async def delete_message(message_id: str):
-    message = await Message.get(message_id)
+async def delete_message(UserName:str, ChatTitle:str):
+    message = await Message.find(Message.UserName == UserName and Message.ChatTitle == ChatTitle).first_or_none()
     throw_exception(message)
     await message.delete()
     return "Message deleted successfully"
