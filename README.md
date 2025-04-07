@@ -49,7 +49,7 @@ Front Page:
 ![Frontpage]([https://via.placeholder.com/468x300?text=App+Screenshot+Here](https://github.com/JamesTzh/GovTechTakeHomeAssignment/blob/main/Images/Front%20page.png))
 
 Chat Page:
-![chatpage]([https://via.placeholder.com/468x300?text=App+Screenshot+Here](https://github.com/JamesTzh/GovTechTakeHomeAssignment/blob/main/Images/Front%20page.png))
+![https://github.com/JamesTzh/GovTechTakeHomeAssignment/blob/main/Images/Chat%20with%20history.png](chatpage)
 
 FASTAPI Page:
 ![FASTAPIpage]([https://via.placeholder.com/468x300?text=App+Screenshot+Here](https://github.com/JamesTzh/GovTechTakeHomeAssignment/blob/main/Images/Front%20page.png))
